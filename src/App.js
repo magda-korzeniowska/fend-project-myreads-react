@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <ListBooks
-          listOfBooks={this.state.books}
+          books={this.state.books}
         />
       </div>
     )

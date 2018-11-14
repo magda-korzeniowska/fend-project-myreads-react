@@ -10,19 +10,19 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <BookShelf
-            books={this.props.listOfBooks}
+            books={this.props.books}
             bookShelfTitle = 'Currently Reading'
             shelf = 'currentlyReading'
           />
           <BookShelf
-            books={this.props.listOfBooks}
+            books={this.props.books}
             bookShelfTitle = 'Want To Read'
             shelf = 'wantToRead'
           />
           <BookShelf
-            books={this.props.listOfBooks}
+            books={this.props.books}
             bookShelfTitle = 'Read'
-            shelf = 'Read'
+            shelf = 'read'
           />
         </div>
         <div className="open-search">

@@ -8,9 +8,13 @@ class BookShelf extends Component {
         <h2 className="bookshelf-title">{this.props.bookShelfTitle}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            <li>
-              <Book />
-            </li>
+            {this.props.books
+              .filter(book => book.shelf === this.props.shelf)
+              .map(book =>
+                <li key={book.id}>
+                  <Book />
+                </li>
+              )}
           </ol>
         </div>
       </div>
