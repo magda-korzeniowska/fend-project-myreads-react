@@ -9,7 +9,21 @@ class ListBooks extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <BookShelf />
+          <BookShelf
+            books={this.props.listOfBooks}
+            bookShelfTitle = 'Currently Reading'
+            shelf = 'currentlyReading'
+          />
+          <BookShelf
+            books={this.props.listOfBooks}
+            bookShelfTitle = 'Want To Read'
+            shelf = 'wantToRead'
+          />
+          <BookShelf
+            books={this.props.listOfBooks}
+            bookShelfTitle = 'Read'
+            shelf = 'Read'
+          />
         </div>
         <div className="open-search">
           <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
