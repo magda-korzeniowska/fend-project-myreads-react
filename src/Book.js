@@ -2,11 +2,19 @@ import React, { Component } from 'react'
 
 class Book extends Component {
   render() {
+
+    let bookImage
+    if (this.props.book.imageLinks) {
+      bookImage = this.props.book.imageLinks.thumbnail
+    } else {
+      bookImage = "https://via.placeholder.com/128x193.jpg?text=No+Image"
+    }
+
     return(
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193,
-            backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
+            backgroundImage: `url(${ bookImage })` }}></div>
           <div className="book-shelf-changer">
             <select
               onChange={(e) => this.props.changeShelf(

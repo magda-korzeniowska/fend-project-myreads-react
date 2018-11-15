@@ -1,13 +1,31 @@
 import React, { Component } from 'react'
+import Book from './Book'
+import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
 
   state = {
-    query: ''
+    query: '',
+    foundBoooks: []
   }
 
   updateQuery = (query) => {
     this.setState({ query: query })
+    this.getFoundBooks(query)
+  }
+
+  getFoundBooks = (query) => {
+    if (query) {
+      BooksAPI.search(query).then((foundBoooks) => {
+        if (foundBoooks.length) {
+          this.setState({ foundBoooks: foundBoooks })
+        } else {
+          this.setState({ foundBoooks: [] })
+        }
+      })
+    } else {
+      this.setState({ foundBoooks: [] })
+    }
   }
 
   render() {
@@ -34,7 +52,15 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+            {this.state.foundBoooks.map(foundBook =>
+              <li key={foundBook.id}>
+                <Book
+                  book={foundBook}
+                />
+              </li>
+            )}
+          </ol>
         </div>
       </div>
     )
