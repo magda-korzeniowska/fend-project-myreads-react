@@ -13,16 +13,19 @@ class ListBooks extends Component {
             books={this.props.books}
             bookShelfTitle = 'Currently Reading'
             shelf = 'currentlyReading'
+            changeShelf={this.props.changeShelf}
           />
           <BookShelf
             books={this.props.books}
             bookShelfTitle = 'Want To Read'
             shelf = 'wantToRead'
+            changeShelf={this.props.changeShelf}
           />
           <BookShelf
             books={this.props.books}
             bookShelfTitle = 'Read'
             shelf = 'read'
+            changeShelf={this.props.changeShelf}
           />
         </div>
         <div className="open-search">
