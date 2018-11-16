@@ -36,10 +36,10 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {/* <ListBooks
+        <ListBooks
           books={this.state.books}
           changeShelf={this.changeShelf}
-        /> */}
+        />
         <SearchBooks
           books={this.state.books}
           changeShelf={this.changeShelf}
