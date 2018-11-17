@@ -8,7 +8,7 @@ class SearchBooks extends Component {
 
   state = {
     query: '',
-    foundBoooks: []
+    foundBooks: []
   }
 
   updateQuery = (query) => {
@@ -18,15 +18,15 @@ class SearchBooks extends Component {
 
   getFoundBooks = (query) => {
     if (query) {
-      BooksAPI.search(query).then((foundBoooks) => {
-        if (foundBoooks.length) {
-          this.setState({ foundBoooks: foundBoooks })
+      BooksAPI.search(query).then((foundBooks) => {
+        if (foundBooks.length) {
+          this.setState({ foundBooks: foundBooks })
         } else {
-          this.setState({ foundBoooks: [] })
+          this.setState({ foundBooks: [] })
         }
       })
     } else {
-      this.setState({ foundBoooks: [] })
+      this.setState({ foundBooks: [] })
     }
   }
 
@@ -55,21 +55,27 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.foundBoooks.map(foundBook => {
-              let shelf = 'none'
-              this.props.books.map(book => (
-                book.id === foundBook.id ? shelf = book.shelf : ''
-              ))
-              return(
-                <li key={foundBook.id}>
-                  <Book
-                    book={foundBook}
-                    changeShelf={this.props.changeShelf}
-                    currentShelf={shelf}
-                  />
-                </li>
-              )
-            })}
+            {this.state.foundBooks.length > 0 && (
+              this.state.foundBooks.map(foundBook => {
+                let shelf = 'none'
+                this.props.books.map(book => (
+                  book.id === foundBook.id ? shelf = book.shelf : ''
+                ))
+                return(
+                  <li key={foundBook.id}>
+                    <Book
+                      book={foundBook}
+                      changeShelf={this.props.changeShelf}
+                      currentShelf={shelf}
+                    />
+                  </li>
+                )
+              })
+            )}
+
+            {this.state.foundBooks.length === 0 && this.state.query.length !== 0 && (
+              <span className="no-book-found">Sorry, no book found</span>
+            )}
           </ol>
         </div>
       </div>
