@@ -31,6 +31,7 @@ class BooksApp extends React.Component {
   }
 
   changeShelf = (book, shelf) => {
+    // .then(this.getBooks) - to refresh the page after changing a shelf 
     BooksAPI.update(book, shelf).then(this.getBooks)
   }
 
